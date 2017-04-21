@@ -8,12 +8,12 @@ let run r e =
 let return x =
   Reader (fun _ -> x)
 
-let ask =
-  Reader (fun x -> x)
-
 let (>>=) r g =
   match r with
   | Reader f -> Reader (fun env -> run (g (f env)) env)
+
+let ask =
+  Reader (fun x -> x)
 
 let get_name =
   ask >>= fun p ->
