@@ -10,5 +10,5 @@ clean:
 build:
 	jbuilder build bin/main.exe
 
-run:
+run: build
 	./_build/default/bin/main.exe

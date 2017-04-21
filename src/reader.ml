@@ -16,16 +16,14 @@ let (>>=) r g =
   | Reader f -> Reader (fun env -> run (g (f env)) env)
 
 let get_name =
-  ask >>=
-    (fun p ->
-      match p with
-      | Person (name, _) -> return ("Hello! My name is " ^ name))
+  ask >>= fun p ->
+    match p with
+    | Person (name, _) -> return ("Hello! My name is " ^ name)
 
 let get_age =
-  ask >>=
-    (fun p ->
-      match p with
-      | Person (_, age) -> return ("I'm " ^ (string_of_int age) ^ " years old."))
+  ask >>= fun p ->
+    match p with
+    | Person (_, age) -> return ("I'm " ^ (string_of_int age) ^ " years old.")
 
 let show =
   get_name >>= fun name ->
