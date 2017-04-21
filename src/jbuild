@@ -1,6 +1,6 @@
 (library
   ((name ocamlnds_ofc)
-   ;(public_name ocamlnds_ofc)
+   (public_name ocamlnds_ofc)
    (wrapped true)
    (flags (:standard -warn-error A))
    (libraries (core))))

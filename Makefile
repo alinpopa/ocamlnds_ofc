@@ -1,4 +1,4 @@
-.PHONY: clean build run
+.PHONY: clean build run install
 
 all: build
 
@@ -9,6 +9,9 @@ clean:
 
 build:
 	jbuilder build bin/main.exe
+
+install:
+	jbuilder build @install
 
 run: build
 	./_build/default/bin/main.exe

@@ -2,6 +2,6 @@
  ((names (main))
   (libraries (ocamlnds_ofc))))
 
-;(install
-; ((section bin)
-;  (files ((main.exe as ocamlnds_ofc)))))
+(install
+ ((section bin)
+  (files ((main.exe as ocamlnds_ofc)))))
