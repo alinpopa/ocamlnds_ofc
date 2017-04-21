@@ -1,4 +1,4 @@
-.PHONY: clean build run install
+.PHONY: clean build run install utop
 
 all: build
 
@@ -10,8 +10,11 @@ clean:
 build:
 	jbuilder build bin/main.exe
 
-install:
+install: build
 	jbuilder build @install
 
 run: build
 	./_build/default/bin/main.exe
+
+utop: install
+	jbuilder exec utop
