@@ -7,13 +7,24 @@ let run_reader () =
   print_endline ((run show) john)
 
 let string_of_list xs =
-  "[" ^ (String.concat ~sep:";" xs) ^ "]"
+  let open String in
+  "[" ^ (concat ~sep:";" xs) ^ "]"
 
 let run_state () =
   let open State in
   let (msg, state) = ((run_state show) []) in
   print_endline ("(" ^ msg ^ ", " ^ (string_of_list state) ^ ")")
 
+let run_writer () =
+  let open Writer in
+  let half x =
+    let open String in
+    tell [concat ["Just halved "; (string_of_int x); "!"]] >>= fun _ ->
+    return (x / 2) in
+  let (x, xs) = (run_writer (half 24 >>= half >>= half)) in
+  print_endline ("(" ^ (string_of_int x) ^ ", " ^ (string_of_list xs) ^ ")")
+
 let () =
   run_state ();
-  run_reader ()
+  run_reader ();
+  run_writer ()
