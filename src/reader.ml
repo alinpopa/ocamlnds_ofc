@@ -25,7 +25,28 @@ let get_age =
     match p with
     | Person (_, age) -> return ("I'm " ^ (string_of_int age) ^ " years old.")
 
+let hello =
+  ask >>= fun name ->
+  return ("hello, " ^ name ^ "!")
+
+let bye =
+  ask >>= fun name ->
+  return ("bye, " ^ name ^ "!")
+
 let show =
   get_name >>= fun name ->
   get_age >>= fun age ->
   return (name ^ ", " ^ age)
+
+let convo =
+  hello >>= fun a ->
+  hello >>= fun b ->
+  bye >>= fun c ->
+  hello >>= fun d ->
+  hello >>= fun e ->
+  bye >>= fun f ->
+  bye >>= fun g ->
+  bye >>= fun h ->
+  hello >>= fun i ->
+  bye >>= fun j ->
+  return (a :: b :: c :: d :: e :: f :: g :: h :: i :: j :: [])
