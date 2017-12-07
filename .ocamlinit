@@ -2,5 +2,4 @@
 #require "core.top";;
 #require "ocamlnds_ofc";;
 
-open Core.Std;;
 open Ocamlnds_ofc;;
